@@ -1,43 +1,37 @@
-# 34tools: Play 2s Before Next Marker or Region
+# Patch34: Play 2s Before Next Marker or Region
 
-**Line:** 34tools Edit  
-**Category:** Transport / Navigation  
+Scripts and tools for REAPER. Useful, weird, and everything in between.
 
-## Overview
+---
 
-A tiny REAPER Lua script that jumps playback **2 seconds before** the **next marker** or **next region start** (whichever is closer), relative to your current position.
+Seeks to 2 seconds before the next marker or region start. If the transport is active (playing, paused, or recording), it seeks without stopping. If the transport is stopped, it moves the edit cursor and starts playback.
 
-- If REAPER is **playing / paused / recording**, it uses the **play cursor** and **seeks without stopping**.
-- If REAPER is **stopped**, it uses the **edit cursor**, jumps, and **starts playback**.
-
-## Features
-
-- Jumps to **(next marker OR next region start) - 2.0 seconds**
-- Never goes before **0.0s**
-- While playing: **no stop**, just a seek/jump
-- While stopped: **sets edit cursor** and starts playback
-- No dependencies (no SWS, no js_ReaScriptAPI)
-
-## Who is it for
-
-- Editors who want a fast **pre-roll** before the next edit point
-- Podcast / dialogue editing workflows where markers or regions define the next checkpoint
-- Anyone who wants a single hotkey for “play 2 seconds before next marker/region”
+No js_ReaScriptAPI required.
 
 ## Installation
 
-1. Download the `.lua` file from this repository.
-2. In REAPER: **Actions → Show action list…**
-3. Click **ReaScript → Load…** and select the script:
-   - `34tools_Edit_Play_2s_Before_Next_Marker_Or_Region.lua`
-4. Assign a shortcut/hotkey if you want.
+1. In REAPER: **Actions → Show action list…**
+2. Click **ReaScript: Load…**
+3. Select `Patch34_Play_2s_Before_Next_Marker_Or_Region.lua`
+4. Optionally assign a keyboard shortcut
+
+## How it works
+
+- **Transport active** (play / pause / record) — uses the play cursor position, then seeks to `next_pos - 2.0s` without interrupting transport
+- **Transport stopped** — uses the edit cursor position, moves it to `next_pos - 2.0s`, and starts playback
+- Both markers and region starts are considered; the nearest one to the right wins
+- If nothing is found to the right, a message box is shown and nothing happens
 
 ## Configuration
 
-Open the script in a text editor and adjust:
+The pre-roll duration is defined at the top of the script:
 
-- `PRE_ROLL_SEC` — pre-roll in seconds (default `2.0`)
+```lua
+local PRE_ROLL_SEC = 2.0
+```
+
+Change this value to adjust the offset.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT
