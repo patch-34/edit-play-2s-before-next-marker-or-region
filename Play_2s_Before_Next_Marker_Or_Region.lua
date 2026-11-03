@@ -1,8 +1,10 @@
--- Patch34
--- Play 2s Before Next Marker or Region
--- If playing, seeks to 2s before the next marker/region start without stopping; otherwise moves the edit cursor there and starts playback.
---
--- https://github.com/patch-34
+-- @description Play 2s Before Next Marker or Region
+-- @version 1.0.0
+-- @author Aleksei Vorobev / Patch34
+-- @link
+--   GitHub repository https://github.com/patch-34/edit-play-2s-before-next-marker-or-region
+-- @about
+--   Seeks to two seconds before the next marker or region start, starting playback if stopped.
 
 local PRE_ROLL_SEC = 2.0
 local EPS = 1e-9
