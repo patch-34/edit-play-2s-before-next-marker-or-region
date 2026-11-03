@@ -1,8 +1,7 @@
-# Patch34: Play 2s Before Next Marker or Region
+# Play 2s Before Next Marker or Region
 
-Scripts and tools for REAPER. Useful, weird, and everything in between.
+**English** · [Русский](README_RU.md)
 
----
 
 Seeks to 2 seconds before the next marker or region start. If the transport is active (playing, paused, or recording), it seeks without stopping. If the transport is stopped, it moves the edit cursor and starts playback.
 
@@ -10,9 +9,15 @@ No js_ReaScriptAPI required.
 
 ## Installation
 
+### ReaPack
+
+Import the [Patch34 ReaPack catalog](https://raw.githubusercontent.com/patch-34/patch34-reapack/main/index.xml) via **Extensions → ReaPack → Import repositories…** and install **Play 2s Before Next Marker or Region** from **Browse packages**.
+
+### Manual installation
+
 1. In REAPER: **Actions → Show action list…**
 2. Click **ReaScript: Load…**
-3. Select `Patch34_Play_2s_Before_Next_Marker_Or_Region.lua`
+3. Select `Play_2s_Before_Next_Marker_Or_Region.lua`
 4. Optionally assign a keyboard shortcut
 
 ## How it works
@@ -32,6 +37,8 @@ local PRE_ROLL_SEC = 2.0
 
 Change this value to adjust the offset.
 
-## License
+## License and credits
 
-MIT
+Distributed under the [MIT License](LICENSE).
+
+Author: [Aleksei Vorobev / Patch34](https://github.com/patch-34).
